@@ -26,6 +26,12 @@ Methods = [
   'UNLINK'
 ];
 
+router.get('/route', async (req, res) => {
+
+  res.status(200).json({status: "API is running!", payload: req.body});
+
+});
+
 router.post('/route', async (req, res) => {
 
     let method = Methods.find(e => e == req.body.method);
