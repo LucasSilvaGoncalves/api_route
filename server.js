@@ -6,6 +6,7 @@ const cron = require('node-cron');
 const axios = require('axios');
 require('dotenv').config();
 
+// Health Check para manter a API funcionando no Heroku
 HealthCheck();
 
 function HealthCheck() {
@@ -13,7 +14,7 @@ function HealthCheck() {
     cron.schedule("*/10 * * * *", () =>
         axios({
             method: 'get',
-            url: 'http://localhost:5000/api/route'
+            url: 'https://digitaly-roteador-api.herokuapp.com/api/route'
         })
         .then(function (response) {
             console.log("Executando HealthCheck a cada 10 minutos")
