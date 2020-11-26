@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
 const { MONGO_URI } = require('./config');
-const axios = require('axios');
+const pm2Config = require('./ecosystem.config').apps[0].env;
 require('dotenv').config();
 
 mongoose.connect(MONGO_URI, {
@@ -17,5 +17,5 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api', require('./routes/route'));
 
-const PORT = process.env.PORT;
+const PORT = pm2Config["PORT"];
 app.listen(PORT, () => console.log(`server is running on ${PORT}`));
