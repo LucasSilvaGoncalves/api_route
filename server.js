@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
 const { MONGO_URI } = require('./config');
-const pm2Config = require('./ecosystem.config').apps[0].env;
+const pm2Config = require('./ecosystem.config').apps[1].env;
 require('dotenv').config();
 
 mongoose.connect(MONGO_URI, {

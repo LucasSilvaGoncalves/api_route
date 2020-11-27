@@ -49,13 +49,10 @@ router.post('/route', async (req, res) => {
     let body = Object.assign({}, req.body);
     delete body.method;
     delete body.path;
-    delete body.cliente;
-    delete body.codigo_cliente;
 
     // Salvar log do request
     saveRequest({
-        "nome_cliente": req.body.cliente,
-        "codigo_cliente": req.body.codigo_cliente,
+        "codigo_cliente": req.headers.codigo_cliente == true ? req.headers.codigo_cliente : null,
         "url": path,
         "metodo": method,
         "payload": body
