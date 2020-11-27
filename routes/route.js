@@ -34,16 +34,16 @@ router.get('/route', async (req, res) => {
 
 router.post('/route', async (req, res) => {
 
+  const requiredFields = ['method', 'path']
+      for (const field of requiredFields) {
+        if (!req.body[field]) {
+          res.status(400).json({error: `Missing param: ${field}`});
+          return;
+        }
+      }
+    
     let method = Methods.find(e => e == req.body.method);
     let path = req.body.path;
-
-    if(!method){
-        res.status(400).json({error: "Método não encontrado!"});    
-    }
-
-    if(!path){
-        res.status(400).json({error: "URL não encontrado!"});    
-    }    
 
     // Apaga os indices: prioridade & fila do Body.
     let body = Object.assign({}, req.body);
