@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 //Set up default mongoose connection
-var mongoDB = 'mongodb+srv://root:1VZVRqoIUrvtjWjN@cluster0-b7xot.gcp.mongodb.net/digitaly';
+var mongoDB = '';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 
 //Get the default connection
