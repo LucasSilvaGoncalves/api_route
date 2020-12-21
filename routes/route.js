@@ -72,7 +72,13 @@ async function axiosRequest(method, path, body) {
   }).then(async (axiosResponse) => {
     let statusCode = axiosResponse.status;
     let response = axiosResponse.data;
-    return response;
+
+    if(Array.isArray(response)){
+      return {data: response};
+    } else {
+      return response;
+    }
+    
   })
   .catch(function (error) {
     console.log(error);
